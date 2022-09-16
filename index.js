@@ -1,5 +1,6 @@
 import express from "express";
 import mongo from "./db/db.js";
+import cors from "cors";
 import authRouter from "./routers/auth.routers.js";
 
 const app = express();

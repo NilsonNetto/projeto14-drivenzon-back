@@ -9,7 +9,7 @@ export default async function mongo() {
   let dataBase;
 
   try {
-    dataBase = await mongoClient.db('drivenzon-API');
+    dataBase = await mongoClient.db('drivenzon-api');
     return dataBase;
   } catch (error) {
     console.log(error);
