@@ -8,4 +8,6 @@ router.use(tokenValidation);
 
 router.get('/cart', productsControllers.getCart);
 
+router.delete('/cart', productsControllers.deleteFromCart);
+
 export default router;

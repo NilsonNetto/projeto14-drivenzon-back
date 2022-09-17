@@ -17,4 +17,20 @@ const getCart = async (req, res) => {
   }
 };
 
-export { getCart };
+const deleteFromCart = async (req, res) => {
+  const { userId } = res.locals;
+  const { productId } = req.body;
+
+  try {
+    const user = await db.collection('users').findOne({ _id: userId });
+    const newcart = user.cart.filter(product => product.productId !== productId);
+
+    await db.collection('users').updateOne({ _id: userId }, { $set: { cart: newcart } });
+    res.status(200).send('Carrinho atualizado');
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+};
+
+export { getCart, deleteFromCart };
