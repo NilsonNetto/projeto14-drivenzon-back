@@ -7,4 +7,6 @@ router.post('/login', authController.startSession);
 
 router.post('/register', authController.newUser);
 
+router.delete('/logout', authController.endSession); //colocar o middleware quando juntar branchs
+
 export default router;

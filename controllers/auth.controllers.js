@@ -69,4 +69,14 @@ const startSession = async (req, res) => {
   }
 };
 
-export { newUser, startSession };
+const endSession = async (req, res) => {
+  try {
+    await db.collection('sessions').deleteOne({ token: res.locals.token });
+    res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(500);
+  }
+};
+
+export { newUser, startSession, endSession };
